@@ -3,9 +3,8 @@ import React from 'react';
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
 import StickyCircleImage from './components/StickyCircleImage';
-// import Content from './components/Content';
-
-
+import Content from './components/Content';
+import About from './components/About';
 
 // import About from './About';
 // import Features from './Features';
@@ -19,7 +18,8 @@ function App() {
             <Header />
             <HeroSection />
             <StickyCircleImage />
-            {/* <Content /> */}
+            <Content />
+            <About />
             
             {/* ... other sections ... */}
             {/* <About />
