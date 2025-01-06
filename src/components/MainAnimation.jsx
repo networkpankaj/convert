@@ -2,13 +2,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger, MotionPathPlugin } from 'gsap/all';
-import 'owl.carousel/dist/assets/owl.carousel.css';
-import 'owl.carousel';
 
-function MainAnimation() {
-    const playgroundRef = useRef(null);
+const MainAnimation = () => {
     const stickyWrapRef = useRef(null);
-    const reviewsCarouselRef = useRef(null);
+    const stickyElementRef = useRef(null);
+    const playgroundRef = useRef(null);
     const [mouse, setMouse] = useState({ x: 0, y: 0, moved: false });
     const [rect, setRect] = useState({});
 
@@ -17,25 +15,24 @@ function MainAnimation() {
 
         // Cache DOM Elements
         const stickyWrap = stickyWrapRef.current;
-        const stickyElement = stickyWrap.querySelector('.sticky-circle_element');
+        const stickyElement = stickyElementRef.current;
         const playground = playgroundRef.current;
 
         // Optimize Sticky Circle Grow
-        stickyWrap.forEach((wrap) => {
-            let tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: wrap,
-                    start: "top top",
-                    end: "bottom bottom",
-                    scrub: 1,
-                },
-            });
-            tl.fromTo(
-                stickyElement,
-                { width: "35em", height: "35em", borderRadius: "35em" },
-                { width: "100vw", height: "100vh", borderRadius: "3em" }
-            );
+        let tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: stickyWrap,
+                start: "top top",
+                end: "bottom bottom",
+                scrub: 1,
+            },
         });
+
+        tl.fromTo(
+            stickyElement,
+            { width: "35em", height: "35em", borderRadius: "35em" },
+            { width: "100vw", height: "100vh", borderRadius: "3em" }
+        );
 
         // GSAP Scroll Animation
         gsap.to("#octopus", {
@@ -53,21 +50,6 @@ function MainAnimation() {
                 scrub: true,
             },
             ease: "power1.inOut",
-        });
-
-        // Owl Carousel
-        $(reviewsCarouselRef.current).owlCarousel({
-            loop: true,
-            margin: 40,
-            nav: false,
-            dots: false,
-            autoplay: true,
-            autoplayTimeout: 5000,
-            items: 1,
-            responsive: {
-                600: { items: 2 },
-                1000: { items: 3 },
-            },
         });
 
         // Parallax Effect
@@ -109,19 +91,14 @@ function MainAnimation() {
     }, [mouse, rect]);
 
     return (
-        <div>
+        <div ref={playgroundRef}>
             <div ref={stickyWrapRef} className="sticky-circle_wrap">
-                {/* Your sticky circle element here */}
-                <div className="sticky-circle_element"></div>
-            </div>
-            <div ref={playgroundRef} id="playground">
-                {/* Your playground content here */}
-            </div>
-            <div ref={reviewsCarouselRef} id="reviews-carousel">
-                {/* Your reviews carousel content here */}
+                <div ref={stickyElementRef} className="sticky-circle_element">
+                    {/* You can add your sticky circle content here */}
+                </div>
             </div>
         </div>
     );
-}
+};
 
 export default MainAnimation;

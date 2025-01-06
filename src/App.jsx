@@ -2,8 +2,9 @@
 import React from 'react';
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
-// import StickyCircleImage from './components/StickyCircleImage';
+import StickyCircleImage from './components/StickyCircleImage';
 // import Content from './components/Content';
+
 
 
 // import About from './About';
@@ -17,8 +18,8 @@ function App() {
         <div className="page-wrap">
             <Header />
             <HeroSection />
-            {/* <StickyCircleImage />
-            <Content /> */}
+            <StickyCircleImage />
+            {/* <Content /> */}
             
             {/* ... other sections ... */}
             {/* <About />

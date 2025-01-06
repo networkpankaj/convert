@@ -1,10 +1,10 @@
-// // src/components/StickyCircleImage.jsx
-// import React, { useEffect, useRef } from 'react';
-// import img5 from '../assets/image/Chatbot.webp';
-// import { gsap } from 'gsap';
-// import { ScrollTrigger, MotionPathPlugin } from 'gsap/all';
+// src/components/StickyCircleImage.jsx
+import React, { useEffect, useRef } from 'react';
+import img5 from '../assets/image/Chatbot.webp';
+import { gsap } from 'gsap';
+import { ScrollTrigger, MotionPathPlugin } from 'gsap/all';
 
-// const StickyCircleImage = () => {
+const StickyCircleImage = () => {
 //   const stickyWrapRef = useRef(null);
 //   const stickyElementRef = useRef(null);
 
@@ -30,34 +30,36 @@
 //       { width: "100vw", height: "100vh", borderRadius: "3em" }
 //     );
 
-//     // Cleanup function
+    // Cleanup function
 //     return () => {
 //       // Kill the timeline if needed
 //       tl.kill();
 //     };
 //   }, []);
 
-//   return (
-//     <div className="section-slide mod--9">
-//       <div className="section is--header">
-//         <div className="container is--header">
-//           <div ref={stickyWrapRef} className="sticky-circle_wrap">
-//             <div className="sticky-circle">
-//               <div ref={stickyElementRef} className="sticky-circle_element">
-//                 <div className="cta_circle"></div>
-//                 <img
-//                   src={img5}
-//                   sizes="100vw"
-//                   alt="Chat Bot"
-//                   className="sticky-circle_img"
-//                 />
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
+  return (
+    <div className="section-slide mod--9">
+      <div className="section is--header">
+        <div className="container is--header">
+          {/* <div ref={stickyWrapRef} className="sticky-circle_wrap"> */}
+          <div  className="sticky-circle_wrap">
+            <div className="sticky-circle">
+              {/* <div ref={stickyElementRef} className="sticky-circle_element"> */}
+              <div  className="sticky-circle_element">
+                <div className="cta_circle"></div>
+                <img
+                  src={img5}
+                  sizes="100vw"
+                  alt="Chat Bot"
+                  className="sticky-circle_img"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-// export default StickyCircleImage;
+export default StickyCircleImage;
