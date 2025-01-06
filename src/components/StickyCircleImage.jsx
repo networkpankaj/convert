@@ -5,47 +5,45 @@ import { gsap } from 'gsap';
 import { ScrollTrigger, MotionPathPlugin } from 'gsap/all';
 
 const StickyCircleImage = () => {
-//   const stickyWrapRef = useRef(null);
-//   const stickyElementRef = useRef(null);
+  const stickyWrapRef = useRef(null);
+  const stickyElementRef = useRef(null);
 
-//   useEffect(() => {
-//     gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
-//     // Optimize Sticky Circle Grow
-//     const stickyWrap = stickyWrapRef.current;
-//     const stickyElement = stickyElementRef.current;
+    // Optimize Sticky Circle Grow
+    const stickyWrap = stickyWrapRef.current;
+    const stickyElement = stickyElementRef.current;
 
-//     let tl = gsap.timeline({
-//       scrollTrigger: {
-//         trigger: stickyWrap,
-//         start: "top top",
-//         end: "bottom bottom",
-//         scrub: 1,
-//       },
-//     });
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: stickyWrap,
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 1,
+      },
+    });
 
-//     tl.fromTo(
-//       stickyElement,
-//       { width: "35em", height: "35em", borderRadius: "35em" },
-//       { width: "100vw", height: "100vh", borderRadius: "3em" }
-//     );
+    tl.fromTo(
+      stickyElement,
+      { width: "35em", height: "35em", borderRadius: "35em" },
+      { width: "100vw", height: "100vh", borderRadius: "3em" }
+    );
 
     // Cleanup function
-//     return () => {
-//       // Kill the timeline if needed
-//       tl.kill();
-//     };
-//   }, []);
+    return () => {
+      // Kill the timeline if needed
+      tl.kill();
+    };
+  }, []);
 
   return (
     <div className="section-slide mod--9">
       <div className="section is--header">
         <div className="container is--header">
-          {/* <div ref={stickyWrapRef} className="sticky-circle_wrap"> */}
-          <div  className="sticky-circle_wrap">
+          <div ref={stickyWrapRef} className="sticky-circle_wrap">        
             <div className="sticky-circle">
-              {/* <div ref={stickyElementRef} className="sticky-circle_element"> */}
-              <div  className="sticky-circle_element">
+              <div ref={stickyElementRef} className="sticky-circle_element">
                 <div className="cta_circle"></div>
                 <img
                   src={img5}

@@ -3,8 +3,9 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css'; // Import Swiper styles
 import reviewImage from '../assets/image/Icon_bg.webp'; // Adjust the path as necessary
+import AOS from 'aos'; // Import AOS for animation effects
+import 'aos/dist/aos.css'; // Import AOS styles
 
-// Review data
 const reviewsData = [
     {
         name: "Emma Rogers",
@@ -22,24 +23,45 @@ const reviewsData = [
 ];
 
 const Review = () => {
+    // Initialize AOS when the component mounts
+    React.useEffect(() => {
+        AOS.init({ duration: 1000, once: true });
+    }, []);
+
     return (
         <div className="section-slide mod--1">
             <section id="reviews" className="section mod--reviews">
                 <div className="content">
                     <h2 className="heading--center" data-aos="fade-up" data-aos-delay="100">
-                        Client reviews
+                        Client Reviews
                     </h2>
                     <Swiper
-                        spaceBetween={50}
+                        spaceBetween={50} // Space between cards
                         slidesPerView={3} // Show 3 cards at a time
+                        loop
+                        autoplay={{
+                            delay: 3000,
+                            disableOnInteraction: false,
+                        }}
+                        breakpoints={{
+                            // Responsive breakpoints
+                            320: { slidesPerView: 1 },    // 1 card on small screens
+                            600: { slidesPerView: 2 },    // 2 cards on medium screens
+                            1000: { slidesPerView: 3 },   // 3 cards on large screens
+                        }}
                     >
                         {reviewsData.map((review, index) => (
-                            <SwiperSlide key={index} className="swiper-slide mod--reviews">
+                            <SwiperSlide
+                                key={index}
+                                className="swiper-slide mod--reviews"
+                                data-aos="fade-up" // AOS fade-up animation
+                                data-aos-delay={(index + 1) * 100} // Delay based on index
+                            >
                                 <div className="reviews__block">
                                     <div className="reviews__ava-wrap">
                                         <img
                                             src={reviewImage}
-                                            loading="eager"
+                                            loading="lazy"
                                             width="125"
                                             alt={review.name}
                                             className="reviews__ava"

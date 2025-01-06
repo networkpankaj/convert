@@ -6,6 +6,7 @@ import StickyCircleImage from './components/StickyCircleImage';
 import Content from './components/Content';
 import About from './components/About';
 import Features from './components/Features';
+import Footer from './components/Footer';
 import Review from './components/Review';
 
 // import About from './About';
@@ -24,6 +25,7 @@ function App() {
             <About />
             <Features />
             <Review />
+            <Footer />
             {/* ... other sections ... */}
             {/* <About />
             <Features />
