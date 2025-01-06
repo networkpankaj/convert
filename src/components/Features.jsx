@@ -1,12 +1,41 @@
 // src/components/Features.jsx
-import React from 'react';
+import React, { useEffect } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger, MotionPathPlugin } from 'gsap/all'; // Import necessary GSAP plugins
 import octopusImage from '../assets/image/octopus.webp';
 import automatedCallImage from '../assets/image/Marketing Automation.webp';
 import industryCustomizationImage from '../assets/image/Marketing Automation.webp';
 import multiChannelImage from '../assets/image/Marketing Automation.webp';
 import costSavingImage from '../assets/image/Marketing Automation.webp';
 
+gsap.registerPlugin(ScrollTrigger, MotionPathPlugin); // Register the plugins
+
 const Features = () => {
+    useEffect(() => {
+        // GSAP Scroll Animation
+        const octopus = gsap.to("#octopus", {
+            duration: 10,
+            motionPath: {
+                path: "#motionPath",
+                align: "#motionPath",
+                autoRotate: false,
+                alignOrigin: [0.5, 0.5],
+            },
+            scrollTrigger: {
+                trigger: "#motionPath",
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true,
+            },
+            ease: "power1.inOut",
+        });
+
+        // Cleanup function to kill the animation on component unmount
+        return () => {
+            octopus.kill();
+        };
+    }, []);
+
     return (
         <div className="section-slide mod--2">
             <section id="courses" className="section mod--courses">
@@ -34,7 +63,7 @@ const Features = () => {
                             {/* The traced path */}
                             <path
                                 id="motionPath"
-                                d="M 200 -100 L 800 340 L 200 800L 750 1200"
+                                d="M 200 -100 L 800 340 L 200 800 L 750 1200"
                                 stroke="transparent"
                                 fill="none"
                                 strokeWidth="2"
