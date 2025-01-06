@@ -6,6 +6,7 @@ import StickyCircleImage from './components/StickyCircleImage';
 import Content from './components/Content';
 import About from './components/About';
 import Features from './components/Features';
+import Review from './components/Review';
 
 // import About from './About';
 // import Features from './Features';
@@ -22,7 +23,7 @@ function App() {
             <Content />
             <About />
             <Features />
-            
+            <Review />
             {/* ... other sections ... */}
             {/* <About />
             <Features />
