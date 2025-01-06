@@ -5,6 +5,7 @@ import HeroSection from './components/HeroSection';
 import StickyCircleImage from './components/StickyCircleImage';
 import Content from './components/Content';
 import About from './components/About';
+import Features from './components/Features';
 
 // import About from './About';
 // import Features from './Features';
@@ -20,6 +21,7 @@ function App() {
             <StickyCircleImage />
             <Content />
             <About />
+            <Features />
             
             {/* ... other sections ... */}
             {/* <About />
