@@ -22,44 +22,44 @@ import { ScrollTrigger } from 'gsap/all';
 
 
 function Content() {
-    // const galleryRef = useRef(null);
+    const galleryRef = useRef(null);
 
-    // useEffect(() => {
-    //     gsap.registerPlugin(ScrollTrigger);
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
 
-    //     // Desktop Animation
-    //     const details = gsap.utils.toArray(".desktopContentSection:not(:first-child)");
-    //     const photos = gsap.utils.toArray(".desktopPhoto:not(:first-child)");
+        // Desktop Animation
+        const details = gsap.utils.toArray(".desktopContentSection:not(:first-child)");
+        const photos = gsap.utils.toArray(".desktopPhoto:not(:first-child)");
 
-    //     gsap.set(photos, { yPercent: 101 });
+        gsap.set(photos, { yPercent: 101 });
 
-    //     let mm = gsap.matchMedia();
-    //     mm.add("(min-width: 600px)", () => {
-    //         ScrollTrigger.create({
-    //             trigger: galleryRef.current,
-    //             start: "top top",
-    //             end: "bottom bottom",
-    //             pin: ".right",
-    //         });
+        let mm = gsap.matchMedia();
+        mm.add("(min-width: 600px)", () => {
+            ScrollTrigger.create({
+                trigger: galleryRef.current,
+                start: "top top",
+                end: "bottom bottom",
+                pin: ".right",
+            });
 
-    //         details.forEach((detail, index) => {
-    //             let headline = detail.querySelector("li");
-    //             let animation = gsap.timeline().to(photos[index], { yPercent: 0 });
-    //             ScrollTrigger.create({
-    //                 trigger: headline,
-    //                 start: "top 80%",
-    //                 end: "top 50%",
-    //                 animation: animation,
-    //                 scrub: true,
-    //             });
-    //         });
-    //     });
+            details.forEach((detail, index) => {
+                let headline = detail.querySelector("li");
+                let animation = gsap.timeline().to(photos[index], { yPercent: 0 });
+                ScrollTrigger.create({
+                    trigger: headline,
+                    start: "top 80%",
+                    end: "top 50%",
+                    animation: animation,
+                    scrub: true,
+                });
+            });
+        });
 
-    //     // Cleanup on unmount
-    //     return () => {
-    //         ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    //     };
-    // }, []);
+        // Cleanup on unmount
+        return () => {
+            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+        };
+    }, []);
     return (
         <div className="section-slide">
             <div className="content">
@@ -73,8 +73,7 @@ function Content() {
                 <p className="whatis" data-aos="fade-up" data-aos-delay="200">
                     Virtual Octopus is an AI-operated software that can replace most of your manual labor and can be trained specifically for your business. It can interact and operate with your customers the way that you’d want it to, it can adapt to your answering style as well.
                 </p>
-                {/* <div className="gallery" ref={galleryRef}> */}
-                <div className="gallery" >
+                <div className="gallery" ref={galleryRef}>
                     <div className="left">
                         <div className="desktopContent">
                             <ul>
